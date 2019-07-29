@@ -1,26 +1,41 @@
-<img src="../public/assets/img/burger.jpg">
-<h1>Eat-Da-Burger!</h1>
+<div class="container-fluid">
+  <img id="burger-img" src="assets/img/burger.jpg" height="200px" width="200px">
+  <h1>Eat-Da-Burger!</h1>
 
-<ul>
-  {{#each burgers}}
+  <ul>
+    {{#unless devour}}
+    {{#each burgers}}
     <li>
       <p>
-        {{this.burger}}. {{this.devoured}}
+        {{this.burger}}
 
         <button data-burgerid="{{this.id}}" class="devour">Devour It!</button>
       </p>
     </li>
-  {{/each}}
-</ul>
+    {{/each}}
+    {{/unless}}
+  </ul>
 
-<form id="addburger" class="input-form">
+  <ul>
+    {{#if devour}}
+    {{#each}}
+    <li>
+      <p>
+        {{this.burger}}
+      </p>
+    </li>
+    {{/each}}
+    {{/if}}
+  </ul>
+
+  <form id="addburger" class="input-form">
     <textarea type="text" name="burger"></textarea>
     <button type="submit">Submit</button>
-</form>
-<h3>Enter a burger you want to eat! Click the "Submit" button.</h3>
-
+  </form>
+  <h3>Enter a burger you want to eat! Click the "Submit" button.</h3>
+</div>
 {{!-- <script type="text/javascript">
-$("#addburger").on("submit", function(event) {
+  $("#addburger").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
@@ -33,12 +48,11 @@ $("#addburger").on("submit", function(event) {
       type: "POST",
       data: newBurger
     }).then(
-      function() {
+      function () {
         console.log("added new burger");
         // Reload the page to get the updated list
         location.reload();
       }
     );
-  }); --}}
-
-</script>
+  });
+</script> --}}
