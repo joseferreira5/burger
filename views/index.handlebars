@@ -1,0 +1,44 @@
+<img src="../public/assets/img/burger.jpg">
+<h1>Eat-Da-Burger!</h1>
+
+<ul>
+  {{#each burgers}}
+    <li>
+      <p>
+        {{this.burger}}. {{this.devoured}}
+
+        <button data-burgerid="{{this.id}}" class="devour">Devour It!</button>
+      </p>
+    </li>
+  {{/each}}
+</ul>
+
+<form id="addburger" class="input-form">
+    <textarea type="text" name="burger"></textarea>
+    <button type="submit">Submit</button>
+</form>
+<h3>Enter a burger you want to eat! Click the "Submit" button.</h3>
+
+{{!-- <script type="text/javascript">
+$("#addburger").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var newBurger = {
+      burger: $("#addburger [name=burger]").val().trim()
+    };
+
+    // Send the POST request.
+    $.ajax("/index", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function() {
+        console.log("added new burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  }); --}}
+
+</script>
