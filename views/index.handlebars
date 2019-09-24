@@ -1,58 +1,51 @@
-<div class="container-fluid">
-  <img id="burger-img" src="assets/img/burger.jpg" height="200px" width="200px">
-  <h1>Eat-Da-Burger!</h1>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Eat-Da-Burger!</h1>
+    <img src="assets/img/burger.jpg" height="200px" width="200px">
+    <hr class="my-4">
+    <h2>Add a new Burger!</h2>
+    <form class="create-form">
+      <div class="form-group">
+        <label for="newBurger">Enter a burger you want to eat! Click the "Submit" button.</label>
+        <input type="text" class="form-control" id="newburger" placeholder="Enter Name of Burger">
+      </div>
+      <button type="submit" class="btn btn-primary" id="addBurger">Submit</button>
+    </form>
+  </div>
 
-  <ul>
-    {{#unless devour}}
-    {{#each burgers}}
-    <li>
-      <p>
-        {{this.burger}}
+  <div class="row mb-5">
+    <div class="col">
+      <ul>
+        <h2>Burgers to eat!</h2>
+        {{#each burgers}}
+        {{#unless devoured}}
+        <li>
+          <p>
+            {{this.burger_name}}
 
-        <button data-burgerid="{{this.id}}" class="devour">Devour It!</button>
-      </p>
-    </li>
-    {{/each}}
-    {{/unless}}
-  </ul>
+            <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
+              data-newDevoured="{{devour}}">>Devour It!</button>
+          </p>
+        </li>
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
 
-  <ul>
-    {{#if devour}}
-    {{#each}}
-    <li>
-      <p>
-        {{this.burger}}
-      </p>
-    </li>
-    {{/each}}
-    {{/if}}
-  </ul>
+    <div class="col">
+      <ul>
+        <h2>Burgers Devoured!</h2>
+        {{#each burgers}}
+        {{#if devoured}}
+        <li>
+          <p>
+            {{this.burger_name}}
+          </p>
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 
-  <form id="addburger" class="input-form">
-    <textarea type="text" name="burger"></textarea>
-    <button type="submit">Submit</button>
-  </form>
-  <h3>Enter a burger you want to eat! Click the "Submit" button.</h3>
 </div>
-{{!-- <script type="text/javascript">
-  $("#addburger").on("submit", function (event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var newBurger = {
-      burger: $("#addburger [name=burger]").val().trim()
-    };
-
-    // Send the POST request.
-    $.ajax("/index", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function () {
-        console.log("added new burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-</script> --}}
