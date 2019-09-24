@@ -23,15 +23,13 @@
           <p>
             {{this.burger_name}}
 
-            <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
-              data-newDevoured="{{devour}}">>Devour It!</button>
-          </p>
+            <button type="button" class="eatburger btn btn-primary" id="eatbutton" data-id="{{this.id}}"
+              data-newDevoured="{{devour}}">Devour It!</button> </p>
         </li>
         {{/unless}}
         {{/each}}
       </ul>
     </div>
-
     <div class="col">
       <ul>
         <h2>Burgers Devoured!</h2>
