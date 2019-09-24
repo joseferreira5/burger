@@ -8,30 +8,21 @@ var orm = {
       cb(result);
       //console.log(result);
     });
-  }/* ,
-  insertOne: function(tableInput, colInput, valOfCol) {
-    var queryString = "INSERT INTO ?? (??) VALUES ??";
-
-    console.log(queryString);
-
-    connection.query(queryString, [tableInput, colInput, valOfCol], function(err, result) {
+  },
+  insertOne: function(burgerName, cb) {
+    var queryString = "INSERT INTO burgers SET ??";
+    connection.query(queryString, [burger_name: burgerName], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   },
-  updatedOne: function(burgerId) {
+  updatedOne: function(burgerId, cb) {
     var queryString = "UPDATE burgers SET devoured = true, WHERE id = ??";
-
-    console.log(queryString);
-
-    connection.query(queryString, [burgerId], function(
-      err,
-      result
-    ) {
+    connection.query(queryString, [burgerId], function(err, result) {
       if (err) throw err;
       console.log(result);
     });
-  } */
+  }
 };
 
 module.exports = orm;
